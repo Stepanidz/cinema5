@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кинозал общежития</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="./">🎬 Кинозал общежития</a>
+      <a class="admin-link" href="admin.html">Администратор</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">РАСПИСАНИЕ</p>
+        <h1>Бронируй время и собирай компанию</h1>
+        <p class="muted">Открытые сеансы доступны всем желающим. Закрытые просто занимают зал на выбранное время.</p>
+      </div>
+      <button id="openBooking" class="primary">+ Забронировать</button>
+    </section>
+
+    <section class="datebar card">
+      <button id="prevDay" class="icon-btn" aria-label="Предыдущий день">←</button>
+      <div>
+        <div id="currentDate" class="date-title"></div>
+        <div id="dateHint" class="muted small"></div>
+      </div>
+      <button id="nextDay" class="icon-btn" aria-label="Следующий день">→</button>
+      <button id="todayBtn" class="secondary today-btn">Сегодня</button>
+    </section>
+
+    <div id="status" class="status"></div>
+    <section id="schedule" class="schedule"></section>
+  </main>
+
+  <div id="bookingModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="closeBooking" aria-label="Закрыть">×</button>
+      <h2>Новое бронирование</h2>
+      <form id="bookingForm">
+        <label>Дата<input id="bookingDate" type="date" required></label>
+        <div class="grid-2">
+          <label>Начало<input id="startTime" type="time" required></label>
+          <label>Окончание<input id="endTime" type="time" required></label>
+        </div>
+
+        <fieldset>
+          <legend>Тип сеанса</legend>
+          <label class="radio"><input type="radio" name="type" value="open" checked> Открытый</label>
+          <label class="radio"><input type="radio" name="type" value="closed"> Закрытый</label>
+        </fieldset>
+
+        <div id="openFields">
+          <label>Название фильма<input id="movieTitle" maxlength="120" placeholder="Например, Интерстеллар"></label>
+          <label>Описание <span class="muted">(необязательно)</span><textarea id="description" maxlength="500" rows="3"></textarea></label>
+          <label>Количество мест<input id="capacity" type="number" min="1" max="200" value="20" required></label>
+        </div>
+
+        <label>Имя организатора<input id="organizer" maxlength="80" placeholder="Например, Степан" required></label>
+        <p class="form-error" id="bookingError"></p>
+        <button class="primary full" type="submit">Создать сеанс</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="joinModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="closeJoin" aria-label="Закрыть">×</button>
+      <h2>Записаться на сеанс</h2>
+      <div id="joinInfo" class="join-info"></div>
+      <form id="joinForm">
+        <label>Ваше имя<input id="participantName" maxlength="80" required placeholder="Например, Алексей"></label>
+        <p class="form-error" id="joinError"></p>
+        <button class="primary full" type="submit">Записаться</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

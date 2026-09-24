@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админка — Кинозал</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="./">🎬 Кинозал общежития</a>
+    <a class="admin-link" href="./">На сайт</a>
+  </div>
+</header>
+
+<main class="container admin-main">
+  <div id="authView" class="auth-card card">
+    <p class="eyebrow">АДМИНИСТРАТОР</p>
+    <h1>Вход</h1>
+    <p class="muted">Войдите через учётную запись Supabase Auth, которую вы добавили как администратора.</p>
+    <form id="loginForm">
+      <label>Email<input id="email" type="email" autocomplete="username" required></label>
+      <label>Пароль<input id="password" type="password" autocomplete="current-password" required></label>
+      <p id="loginError" class="form-error"></p>
+      <button class="primary full">Войти</button>
+    </form>
+  </div>
+
+  <div id="panelView" class="hidden">
+    <div class="admin-head">
+      <div>
+        <p class="eyebrow">АДМИНКА</p>
+        <h1>Управление бронированиями</h1>
+      </div>
+      <button id="logoutBtn" class="secondary">Выйти</button>
+    </div>
+    <div id="adminStatus" class="status"></div>
+    <section id="adminList" class="schedule"></section>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
